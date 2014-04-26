@@ -1,0 +1,6 @@
+Gruntfile.js
+app/scripts/grunticon.loader.js
+app/scripts/mobile_nav.js
+test/spec/*.bac.js
+test/spec/*.js
+app/scripts/*.bac.js

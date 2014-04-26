@@ -1,0 +1,144 @@
+.t11-nav {
+  /*t11 navigation class*/
+}
+
+/*this is the top-level unordered list for the nav bar*/
+/*it's contained list items are floated left by default - right with the */
+/*class 'right'*/
+.t11-nav-toplevel {
+  @include clearfix;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*This class makes up the navigation categories - dropdown lists are contained*/
+/*in child 't11-nav-sub' divs which have a value of 'display: none' until the*/
+/*category is hovered over.*/
+.t11-nav-category {
+  float: left;
+  padding: 0 2em 1em 2em;
+  &:hover {
+    > .t11-nav-sub {
+      display: block;
+    }
+  }
+}
+
+/*floats a category to the right*/
+.t11-nav-category.right {
+  @extend .t11-nav-category;
+  float: right;
+}
+
+/*the divs that contain the hidden sub-menues*/
+/*the default div lines up with the left side of it's parent category*/
+/*this behavior can be altered with the 'center' and 'right' classes*/
+/*triangle border nubs are created with the 'triangle' mixin*/
+
+// triangle border
+.triangle-border {
+  @include triangle(24px, 12px, up, $border-color);
+}
+// triangle fill
+.triangle-fill {
+  @include triangle(22px, 11px, up, #fff);
+}
+
+.t11-nav-sub {
+  @include clearfix;
+  position: absolute;
+  margin-top: 1em;
+  background-color: #fff;
+  border: 1px solid $border-color;
+  width: emcalc(400);
+  overflow: visible;
+  display: none;
+  &:before {
+    content: '';
+    @extend .triangle-border;
+    position: absolute;
+    left: 24px;
+    top: -12px;
+  }
+  &:after {
+    content: '';
+    @extend .triangle-fill;
+    position: absolute;
+    left: 25px;
+    top: -11px;
+  }
+  &:hover {
+    visibility: visible;
+  }
+  h1, h2, h3, h4 {
+    margin-left: 16px;
+  }
+}
+
+.t11-nav-sub.small {
+  @extend .t11-nav-sub;
+  width: emcalc(200);
+}
+
+.t11-nav-sub.right {
+  @extend .t11-nav-sub;
+  margin-left: -300px;
+  &:before {
+    content: '';
+    @extend .triangle-border;
+    position: absolute;
+    left: 310px;
+    top: -12px;
+  }
+  &:after {
+    content: '';
+    @extend .triangle-fill;
+    position: absolute;
+    left: 311px;
+    top: -11px;
+  }
+}
+
+.t11-nav-sub.center {
+  @extend .t11-nav-sub;
+  margin-left: -160px;
+  &:before {
+    content: '';
+    @extend .triangle-border;
+    position: absolute;
+    left: 182px;
+    top: -12px;
+  }
+  &:after {
+    content: '';
+    @extend .triangle-fill;
+    position: absolute;
+    left: 183px;
+    top: -11px;
+  }
+}
+
+
+/*added to second and (if implemented) third level lists to remove default*/
+/*styling - this is possibly an overly complicated way of avoiding using*/
+/*'.t11-nav{ list-style: none }'*/
+.t11-nav-secondlevel,
+.t11-nav-thirdlevel {
+  list-style: none;
+  padding: 0;
+}
+
+/*styling for the submenue items*/
+.t11-nav-submenu-item {
+  @include clearfix;
+  padding: 1em;
+  p {
+    margin-top: 0;
+  }
+  &:hover {
+    /*background-color: scale-lightness(#eee, -10%);*/
+  }
+}
+
+

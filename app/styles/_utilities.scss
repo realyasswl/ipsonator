@@ -1,0 +1,81 @@
+/*functions*/
+
+// strip the unit from a number
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// convert a value to ems based on $base-font-size or a supplied base
+@function convert-to-em($value, $base-value: $base-font-size) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) {
+    $value: 0;
+  }
+  @return $value;
+}
+
+// emcalc
+// return a single value or a list of values from a supplies value or list
+// of values
+@function emcalc($values, $base-value: $base-font-size) {
+  $max: length($values);
+  $emValues: ();
+  @if ($max == 1) {
+    @return convert-to-em(nth($values, 1), $base-value);
+  }
+  @for $i from 1 through $max {
+    $emValues: append($emValues, convert-to-em(nth($values, $i), $base-value));
+  }
+  @return $emValues;
+}
+
+// get-font-padding
+// get font padding from base values (this is not very accurate as font-size
+// is not a true measurement - but I use it to pad select boxes)
+@function get-font-padding($font-size: $base-font-size,
+                           $line-height: $base-line-height) {
+  @return emcalc(($line-height - $font-size) / 2);
+}
+
+
+/*mixins*/
+
+// triangle
+@mixin triangle($width: 20px, $height: 20px, $direction: up, $color: red) {
+  width: 0;
+  height: 0;
+  @include inline-block;
+
+  @if($direction == right) {
+    border-top: $height/2 inset transparent;
+    border-bottom: $height/2 inset transparent;
+    border-left: $width solid $color;
+  }
+
+  @if($direction == left) {
+    border-top: $height/2 inset transparent;
+    border-bottom: $height/2 inset transparent;
+    border-right: $width solid $color;
+  }
+
+  @if($direction == up) {
+    border-left: $width/2  inset transparent;
+    border-right: $width/2  inset transparent;
+    border-bottom: $height solid $color;
+  }
+
+  @if($direction == down) {
+    border-left: $width/2 inset transparent;
+    border-right: $width/2 inset transparent;
+    border-top: $height solid $color;
+  }
+}
+
+// set-font-face
+@mixin set-font-face($short-name, $file-name, $weight: "normal",
+                     $style: "normal", $path: "/styles/fonts/") {
+  @include font-face("#{$short-name}",font-files("#{$path}#{$file-name}.woff",
+                     "#{$path}#{$file-name}.ttf","#{$path}#{$file-name}.svg"),
+                     "#{$path}#{$file-name}.eot",$weight,$style);
+}
+

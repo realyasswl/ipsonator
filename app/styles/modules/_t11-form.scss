@@ -1,0 +1,53 @@
+.t11-form {
+  font-size: $base-font-size;
+  @extend .t11-form-input;
+  @extend .t11-form-label;
+  @extend .t11-form-select;
+  @extend .t11-form-submit;
+  @extend .t11-form-legend;
+  @extend .t11-form-fieldset;
+}
+
+.t11-form-input {
+  input[type="text"], input[type="email"] {
+    border: 1px solid $border-color;
+    padding: get-font-padding();
+    @include border-radius(emcalc(2));
+  }
+}
+
+.t11-form-label {
+  label {
+    @include inline-block;
+    width: 100%;
+    font-weight: bold;
+  }
+}
+
+.t11-form-legend {
+  legend {
+    font-weight: bold;
+    font-size: emcalc(21);
+  }
+}
+
+.t11-form-select {
+  select {
+    padding: get-font-padding();
+    display: block;
+  }
+}
+
+.t11-form-submit {
+  input[type="submit"] {
+    @include leader();
+    margin-left: get-font-padding();
+  }
+}
+
+.t11-form-fieldset {
+  fieldset {
+    border: 1px solid $border-color;
+    @include border-radius(3px)
+  }
+}

@@ -1,0 +1,27 @@
+.t11-icon {
+  @include inline-block;
+}
+
+.t11-small-icon {
+  @extend .t11-icon;
+  height: emcalc(32);
+  width: emcalc(32);
+}
+
+.t11-medium-icon {
+  @extend .t11-icon;
+  height: emcalc(64);
+  width: emcalc(64);
+}
+
+.t11-large-icon {
+  @extend .t11-icon;
+  height: emcalc(128);
+  width: emcalc(128);
+}
+
+@mixin t11-icon-size($size) {
+  @extend .t11-icon;
+  height: emcalc($size);
+  width: emcalc($size);
+}

@@ -1,0 +1,91 @@
+// settings that should be in the site-settings file
+$primary-contrast-color: contrast-color($primary-color);
+$topbar-color: $primary-color;
+$menu-color: scale-lightness($primary-color, 5%);
+$menu-hover-color: scale-lightness($menu-color, 3%);
+$topbar-font-family: $body-font-family;
+$topbar-height: 50px;
+$topbar-margin: $topbar-height;
+
+.t11-m-nav {
+  color: $primary-contrast-color;
+  margin-bottom: $topbar-margin;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+    color: $primary-contrast-color;
+  }
+  li {
+    line-height: 1.6;
+  }
+  li a {
+    display: block;
+    width: 100%;
+    &:hover {
+      background-color: $menu-hover-color;
+    }
+  }
+}
+
+.t11-m-nav-fixed{
+  height: $topbar-height;
+  background-color: $topbar-color;
+  @include clearfix;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.t11-m-nav-titlebox {
+  height: $topbar-height;
+  @include inline-block;
+  float: left;
+}
+
+.t11-m-nav-title {
+  height: $topbar-height;
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  padding-left: 16px;
+}
+
+.t11-m-nav-title h1 {
+  font-size: 21px;
+  font-family: $topbar-font-family;
+  float: left;
+  margin: 0;
+  padding: 0;
+  /*padding-left: 16px;*/
+}
+
+.menu-icon {
+  width: 28px;
+  height: 20px;
+  float: right;
+  margin-top: ($topbar-height - 20) / 2;
+  padding-right: 16px;
+}
+
+
+// compensate for the fixed topbar
+.t11-m-nav-toplevel {
+  position: relative;
+  top: $topbar-height;
+  left: 0;
+}
+
+.t11-m-nav-toplevel, .t11-m-nav-secondlevel {
+  background-color: $menu-color;
+}
+
+.t11-m-nav-category a {
+  padding-left: 16px;
+}
+

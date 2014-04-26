@@ -1,0 +1,79 @@
+/*site styles*/
+
+// vertical rhythm
+$base-font-size: 16px;
+$base-line-height: $base-font-size * 1.4;
+$default-rhythm-border-style: solid;
+$round-to-nearest-half-line: true;
+$min-line-padding: 2px;
+
+@include establish-baseline;
+
+h1 {
+  @include adjust-font-size-to(28px);
+}
+h2 {
+  @include adjust-font-size-to(21px);
+}
+h3 {
+  @include adjust-font-size-to(16px);
+}
+h4 {
+  @include adjust-font-size-to(21px);
+}
+small {
+  @include adjust-font-size-to(12px);
+}
+
+// font-families
+@include set-font-face("Nauman-Medium", "Nauman-Medium-webfont");
+@include set-font-face("Nauman-Regular", "Nauman-Medium-webfont");
+
+$body-font-family: "Nauman-Regular";
+$header-font-family: "Nauman-Medium";
+
+body {
+  font-family: $body-font-family;
+}
+h1, h2, h3, h4 {
+  font-family: $header-font-family;
+}
+
+// colors
+
+$font-color: #333;
+$border-color: scale-lightness($font-color, 50%);
+$header-color: $font-color;
+$primary-color: #222;
+$alert-color: #8a2d2e;
+$secondary-color: #6d822a;
+
+body {
+  color: $font-color;
+}
+
+a {
+  color: $primary-color;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+nav {
+  a {
+    font-size: emcalc(22px);
+  }
+}
+
+hr {
+  border-color: $border-color;
+}
+
+// classes
+.bold {
+  font-weight: bold;
+}
+
+p, img {
+  @include leader;
+}

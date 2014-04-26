@@ -1,0 +1,62 @@
+.t11-button {
+  $border-radius: 3px;
+  $font-size: $base-font-size;
+  $padding: get-font-padding();
+  @include sassy-button-structure($border-radius, $font-size, $padding);
+  $gradient-style: "simple";
+  $first-color: scale-lightness($primary-color, 15%);
+  $second-color: $primary-color;
+  $text-color: contrast-color($first-color);
+  $text-style: "raised";
+  $auto-states: true;
+  @include sassy-button-gradient($gradient-style,$first-color,$second-color,
+                                 $text-color,$text-style,$auto-states);
+}
+
+.t11-button.small {
+  @extend .t11-button;
+}
+
+.t11-button.small.round {
+  @extend .t11-button.small;
+  $border-radius: 10px;
+  $font-size: $base-font-size;
+  $padding: get-font-padding();
+  @include sassy-button-structure($border-radius, $font-size, $padding);
+}
+
+.t11-button.medium {
+  @extend .t11-button;
+  $border-radius: 3px;
+  $font-size: emcalc(21);
+  $padding: $font-size * 0.3;
+  @include sassy-button-structure($border-radius, $font-size, $padding);
+}
+
+.t11-button.medium.round {
+  @extend .t11-button;
+  $border-radius: 10px;
+  $font-size: emcalc(21);
+  $padding: $font-size * 0.3;
+  @include sassy-button-structure($border-radius, $font-size, $padding);
+}
+
+.t11-button.alert {
+  @extend .t11-button;
+  $gradient-style: "simple";
+  $first-color: scale-lightness($alert-color, 15%);
+  $second-color: $alert-color;
+  $text-color: contrast-color($first-color);
+  $text-style: "raised";
+  $auto-states: true;
+  @include sassy-button-gradient($gradient-style,$first-color,$second-color,
+                                 $text-color,$text-style,$auto-states);
+}
+
+.t11-button.medium.alert {
+  @extend .t11-button.alert;
+  $border-radius: 3px;
+  $font-size: emcalc(21);
+  $padding: $font-size * 0.3;
+  @include sassy-button-structure($border-radius, $font-size, $padding);
+}

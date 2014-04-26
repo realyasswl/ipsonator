@@ -1,0 +1,37 @@
+doctype html
+html.no-js
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    title
+      block title
+        |test eleven
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+
+    // build:css /styles/main.css
+    link(href="/styles/main.css", rel="stylesheet")
+    // endbuild
+
+    // build:js /scripts/modernizr.js
+    script(src="/bower_components/modernizr/modernizr.js")
+    // endbuild
+
+  body
+    block mobile
+    .wrap
+      .container
+        //include _header
+        block content
+        //-include _footer
+
+      // build:js /scripts/main.js
+      script(src="/bower_components/jquery/dist/jquery.js")
+      script(src="/scripts/utilities.js")
+      script(src="/scripts/processJSON.js")
+      script(src="/scripts/languageComponentDictionary.js")
+      script(src="/scripts/scholar.js")
+      script(src="/scripts/writer.js")
+      script(src="/scripts/main.js")
+      script(src="/scripts/mobile_nav.js")
+      // endbuild
